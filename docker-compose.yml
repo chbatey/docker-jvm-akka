@@ -1,0 +1,87 @@
+version: '2'
+services: 
+  jdk8:
+    image: jdk8
+    environment:
+      - JAVA_TOOL_OPTIONS=
+  
+  jdk8MemoryLimit:
+    image: jdk8 
+    mem_limit: 1024M
+    environment:
+      - JAVA_TOOL_OPTIONS=
+
+  jdk8MemoryLimitCGroupMemoryLimit:
+    image: jdk8 
+    mem_limit: 1024M
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap 
+
+  jdk8CpuShares:
+    image: jdk8
+    mem_limit: 1024M
+    cpu_shares: 2048
+    environment:
+      - JAVA_TOOL_OPTIONS=
+
+  jdk8CpuQuotasAndQuotaContainerSupport:
+    image: jdk8
+    mem_limit: 1024M
+    cpu_shares: 2048
+    cpu_quota: 300000
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport  -XX:-PreferContainerQuotaForCPUCount
+
+  jdk11:
+    image: jdk11
+    environment:
+      - JAVA_TOOL_OPTIONS=
+
+  jdk11MemoryLimit:
+    image: jdk11
+    mem_limit: 1024M
+    environment:
+      - JAVA_TOOL_OPTIONS=
+ 
+  # UseCGroupMemoryLimitForHeap has been removed in jdk11
+  jdk11MemoryLimitContainerSupport:
+    image: jdk11
+    mem_limit: 1024M
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport
+
+  jdk11CpuShares:
+    image: jdk11
+    mem_limit: 1024M
+    cpu_shares: 2048
+    environment:
+      - JAVA_TOOL_OPTIONS=
+
+  jdk11CpuSharesContainerSupport:
+    image: jdk11
+    mem_limit: 1024M
+    cpu_shares: 2048
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport
+
+  jdk11CpuQuotasAndQuotaContainerSupport:
+    image: jdk11
+    mem_limit: 1024M
+    cpu_shares: 2048
+    cpu_quota: 300000
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport  -XX:-PreferContainerQuotaForCPUCount
+
+  jdk11CpuQuotasAndQuotaContainerSupportPreferQuotas:
+    image: jdk11
+    mem_limit: 1024M
+    cpu_shares: 2048
+    cpu_quota: 300000
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport -XX:+PreferContainerQuotaForCPUCount
+
+
+
+
+
+
